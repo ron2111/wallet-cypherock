@@ -1,8 +1,8 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext, useState } from "react";
 import { ColorModeContext, tokens } from "../../theme";
-import logo from "../../img/logo.svg";
-import logo2 from "../../img/logo2.svg";
+import logo from "../../logos/logo.svg";
+import logo2 from "../../logos/logo2.svg";
 import ContrastOutlinedIcon from '@mui/icons-material/ContrastOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 

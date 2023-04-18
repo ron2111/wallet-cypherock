@@ -20,7 +20,7 @@ export const tokens = (mode) => ({
         },
         primary: {
           100: "#d0d1d5",
-          200: "#a1a4ab",
+          200: "#d0d1d5",
           300: "#727681",
           400: "#1F2A40",
           500: "#0A1018",
@@ -77,7 +77,7 @@ export const tokens = (mode) => ({
         },
         primary: {
           100: "#040509",
-          200: "#080b12",
+          200: "#040509",
           300: "#0c101b",
           400: "#f2f0f0", // manually changed
           500: "#141b2d",
