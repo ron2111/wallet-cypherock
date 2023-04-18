@@ -4,7 +4,7 @@ export const mockDataCoin = [
   {
     id: 1,
     cLogo: "../img/bitcoin.svg",
-    cName: "Bitcoin",
+    cName: "BITCOIN",
     val: "BTC 0.0025600",
     usd: "0.5268",
   },
@@ -32,7 +32,7 @@ export const mockDataCoin = [
   {
     id: 5,
     cLogo: "../img/bitcoin.svg",
-    cName: "Bitcoin",
+    cName: "BITCOIN",
     val: "BTC 0.0025600",
     usd: "0.5268",
   },

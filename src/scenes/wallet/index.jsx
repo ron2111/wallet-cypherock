@@ -7,6 +7,7 @@ import Header from "../../components/Header";
 import CallReceivedOutlinedIcon from '@mui/icons-material/CallReceivedOutlined';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
+
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -23,10 +24,11 @@ const Team = () => {
     event.stopPropagation();
   };
   const columns = [
-    { field: "id", flex: 0.2,headerName: "Total Coins: 6" },
+    { field: "id",headerName: "Total Coins: 6" },
     {
       field: 'cLogo',
-      headerName: 'Logo',
+      headerName: '',
+      flex: 0.1,
       width: 150,
       editable: true,
       renderCell: (params) => <img src={params.value} />,
@@ -52,6 +54,7 @@ const Team = () => {
     },
     {
       field: "Receive ",
+      headerName: '',
       renderCell: (cellValues) => {
         return (
           <Button
@@ -68,6 +71,7 @@ const Team = () => {
     },
     {
       field: "Send ",
+      headerName: '',
       renderCell: (cellValues) => {
         return (
           <Button
