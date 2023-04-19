@@ -96,7 +96,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Portfolio"
-              to="/"
+              to="/dashboard"
               icon={<CallReceivedOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

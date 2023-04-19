@@ -8,7 +8,7 @@ const Dashboard = () =>{
     const colors = tokens(theme.palette.mode);
     return <Box m="20px">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title=" Dashboard" subtitle="Welcome to your dashboard" />
+        <Header title=" Portfolio" subtitle="Welcome to your portfolio" />
         <Box>
           <Button
             sx={{

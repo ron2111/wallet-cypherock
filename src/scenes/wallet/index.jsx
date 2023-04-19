@@ -52,7 +52,7 @@ const Wallet = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [open, setOpen] = React.useState(false);
-  const [address, setAdd] = React.useState(false);
+  const [address, setAdd] = React.useState(true);
   const [verify, setVerify] = React.useState(false);
 
   const handleClickOpen = () => {

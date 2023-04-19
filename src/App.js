@@ -22,7 +22,8 @@ function App() {
             <Topbar setIsSidebar={setIsSidebar} />
             {/* Routes */}
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<Wallet />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/wallet" element={<Wallet />} />
             </Routes>
           </main>
