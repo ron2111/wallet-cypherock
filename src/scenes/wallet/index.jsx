@@ -10,24 +10,14 @@ import CallReceivedOutlinedIcon from '@mui/icons-material/CallReceivedOutlined';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import { styled } from '@mui/material/styles';
-import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import LooksOneRoundedIcon from '@mui/icons-material/LooksOneRounded';
-import { CenterFocusStrong } from '@mui/icons-material';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import RemoveIcon from '@mui/icons-material/Remove';
 
-// const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-//   '& .MuiDialogContent-root': {
-//     padding: theme.spacing(2),
-//   },
-//   '& .MuiDialogActions-root': {
-//     padding: theme.spacing(1),
-//   },
-// }));
+
+
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
 
@@ -63,16 +53,26 @@ const Wallet = () => {
   const colors = tokens(theme.palette.mode);
   const [open, setOpen] = React.useState(false);
   const [address, setAdd] = React.useState(false);
+  const [verify, setVerify] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  // 2nd recieve page
   const handleAddress = () => {
-    setAdd(true);
+    setAdd(false);
   };
+
+  // Finaly recieve page
+  const handleVerify = () => {
+    setVerify(true);
+  };
+
   const handleClose = () => {
     setOpen(false);
+    setAdd(true);
+    setVerify(false);
   };
   // to diable the default behaviour of selecting the row
   const handleClick = (event, cellValues) => {
@@ -199,9 +199,12 @@ const Wallet = () => {
           },
         }}
       >
+
+        {/* DataGrid Table for coins */}
         <DataGrid rows={mockDataCoin} columns={columns} onCellClick={handleCellClick}
         onRowClick={handleRowClick}/>
-        
+
+      {/*Dialog box  */}
         <Dialog
          PaperProps={{ sx: { backgroundColor: colors.primary[900],width: "80%", height: "90%", } }}
         onClose={handleClose}
@@ -218,11 +221,41 @@ const Wallet = () => {
             Close
           </CloseIcon>
           </Typography>
-          <img  width="550px"src={require('../../logos/dev.png')}></img>
+          {address === true ?  
+   (
+    <img width="550px" style={{marginTop:10}} src={require('../../logos/dev.png')}  />
+
+    ) : 
+    (
+      // { verify === true ? (
+      //   <img width="550px" src={require('../../logos/dev2.png')} />
+      // ) : (
+        <div>
+          {verify=== false ?  
+          (
+           <img width="550px" style={{marginTop:10}} src={require('../../logos/dev2.png')}  />
+       
+           ) : 
+           (
+        <img width="550px" src={require('../../logos/dev3.png')} />
+           )
+}
+        </div>
+      )
+      
+    
+}
+          
           <Box marginLeft={5} >
+            {address === true ?(
         <Typography style={{fontSize:25 , fontWeight: 300}}>
             Follow the instructions on device
           </Typography>
+            ) : null
+}
+
+
+{address === true ?(
           <Box
           height={35}
           width= {450}
@@ -233,6 +266,26 @@ const Wallet = () => {
           <ArrowForwardIcon style={{ marginLeft:5,color: colors.yellow[900]}}/>   Select the Wallet On Device
           </Typography>
           </Box>
+) : (
+  <Box
+          height={60}
+          width= {550}
+          marginLeft={-4}
+               backgroundColor={colors.yellow[700]}
+               borderRadius={3}
+              >
+                {/* Verification */}
+  <Typography style={{ fontSize:30 ,textAlign:'center' , marginTop: 30,color: colors.yellow[200]}}>
+     25BKJNKNLJL58fjkdhfk26dnfds15
+     <Button variant="contained" style={{marginLeft:20,color: colors.yellow[200]}}>
+      Copy
+     </Button>
+  </Typography>
+  </Box>
+)
+
+}
+{address === true ?(
           <Box
           height={35}
           width= {450}
@@ -244,23 +297,72 @@ const Wallet = () => {
           <ArrowForwardIcon style={{ marginLeft:5,color: colors.yellow[900]}}/>  Select the Coin on Device
           </Typography>
           </Box>
+) : (
+  <div>
+    {verify === false ?(
+<Typography style={{fontSize:20 , marginTop:10, fontWeight: 500, color :"#4848F6"}}>
+   {/* Verification */}
+            Verify Address on Device
+          </Typography> ) : ( null)
+}
+          </div>
+
+)
+
+}
           <Box
           height={35}
           width= {450}
                backgroundColor={colors.yellow[700]}
                borderRadius={2}
               >
+
+{address === true ?(
+  // Device
           <Typography style={{ fontSize:20 ,marginTop: 20}}>
           <ArrowForwardIcon style={{marginLeft:5,color: colors.yellow[900]}}/>  Tap 1 card of any 4 Cards
           </Typography>
+) : (
+  <Box
+          height={35}
+          width= {500}
+          marginTop={5}
+          marginLeft={-4}
+               backgroundColor={colors.yellow[700]}
+               borderRadius={2}
+              >
+                {verify === false ?(
+<Typography style={{ fontSize:20 ,marginTop: 20}}>
+{/* Device */}
+          <ArrowForwardIcon style={{marginLeft:5,color: colors.yellow[900]}}/>  Please match the address to be shown in x1 wallet.
+
+          </Typography>) : (
+            <Typography style={{ fontSize:20 , fontWeight: 800, marginTop: 20, color :"#4848F6"}}>
+{/* Recieve */}
+               <ErrorOutlineIcon style={{marginLeft:35,color: "#4848F6"}}/> Address Verified
+  
+            </Typography>) 
+
+}
+          </Box>
+)
+}
           </Box>
           </Box>
        
        <Divider style={{marginTop:20,width:599,marginLeft:-15}}/>
+       {address===true ? (
+        // Device
           <Button onClick={handleAddress} style={{fontSize:23,marginTop: 30, marginLeft: 400, color: colors.yellow[900]}} variant="outlined"  >
             Continue
           </Button>
-          
+       ) : (
+        // Verification -----> Receive
+        <Button onClick={handleVerify} style={{fontSize:23,marginTop: 30, marginLeft: 200, color: colors.yellow[900]}} variant="contained"  >
+            {verify === false ? "Continue" : "Re-verify"}
+          </Button>
+       )
+}
         </Box>
         <DialogActions>
           
